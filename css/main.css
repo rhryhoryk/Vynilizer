@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 2rem;
+}
+
+.player {
+  position: relative;
+  width: 50vw;
+  height: 40vw;
+  margin: 2vw auto;
+  background: url('../img/Base.png') no-repeat 50% 50%;
+  background-size: cover;
+}
+
+.vinyl {
+  position: relative;
+  top: 1.8vw;
+  display: block;
+  width: 35vw;
+}
+
+.pickup {
+  position: relative;
+  display: block;
+  width: 30vw;
+  left: 1vw;
+  z-index: 3;
+}
+
+.track-list {
+  position: absolute;
+  top: 1vw;
+  right: 0.5vw;
+  width: 13vw;
+  height: 5vw;
+  border-radius: 10px;
+  background-color: #000;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 1vw;
+  right: 0.5vw;
+}
+
+button {
+  border-radius: 5px;
+  width: 5vw;
+  height: 5vw;
+  font-size: 2.5rem;
+  background: url('../img/playButtons.png') no-repeat;
+  background-size: cover;
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.prev {background-position: 0 0;}
+.play {background-position: -5.4vw 0;}
+.next {background-position: -10.9vw 0;}
