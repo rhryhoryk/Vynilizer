@@ -65,3 +65,16 @@ button:hover {
 .prev {background-position: 0 0;}
 .play {background-position: -5.4vw 0;}
 .next {background-position: -10.9vw 0;}
+
+.--vinylaised {
+  animation: vinyl-rotation infinite 3s linear;
+}
+
+@keyframes vinyl-rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
