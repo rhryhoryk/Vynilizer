@@ -68,6 +68,7 @@ button:hover {
 
 .--vinylaised {
   animation: vinyl-rotation infinite 3s linear;
+  /* animation-delay: 1.5s; */
 }
 
 @keyframes vinyl-rotation {
@@ -76,5 +77,19 @@ button:hover {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.--pickupaised {
+  animation: pickup-rotation 2s linear forwards;
+  transform-origin: 0 50% 0; 
+}
+
+@keyframes pickup-rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-18deg);
   }
 }
