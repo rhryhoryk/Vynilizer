@@ -43,6 +43,11 @@ body {
 }
 
 .buttons {
+  display: grid;
+  grid-template: repeat(2, 5vw)/repeat(3, 5vw);
+  grid-template-areas:  ". . up-down" 
+                        "prev play next"; 
+  grid-gap: 0.2vw;
   position: absolute;
   bottom: 1vw;
   right: 0.5vw;
@@ -62,9 +67,11 @@ button:hover {
   cursor: pointer;
 }
 
-.prev {background-position: 0 0;}
-.play {background-position: -5.4vw 0;}
-.next {background-position: -10.9vw 0;}
+.prev {background-position: 0 0;       grid-area: prev;}
+.play {background-position: -5.4vw 0;  grid-area: play;}
+.next {background-position: -10.9vw 0; grid-area: next}
+.pickup-up-down {background-position: -16.5vw 0; grid-area: up-down}
+
 
 .--vinylaised {
   animation: vinyl-rotation infinite 3s linear;
@@ -84,6 +91,10 @@ button:hover {
   animation: pickup-rotation 2s linear forwards;
   transform-origin: 0 50% 0; 
 }
+.--unpickupaised {
+  animation: pickup-reverse-rotation 2s linear forwards;
+  transform-origin: 0 50% 0; 
+}
 
 @keyframes pickup-rotation {
   from {
@@ -91,5 +102,14 @@ button:hover {
   }
   to {
     transform: rotate(-18deg);
+  }
+}
+
+@keyframes pickup-reverse-rotation {
+  from {
+    transform: rotate(-18deg);
+  }
+  to {
+    transform: rotate(0deg);
   }
 }
