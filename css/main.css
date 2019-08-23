@@ -45,11 +45,13 @@ body {
 
 .track-list__item {
   list-style: none;
-  color: #33333380;
+  /* color: #33333380; */
+  color: #000;
+
 }
 
-.--chosen {
-  color: #000;
+.--unchosen {
+  color: #33333380;
 }
 
 .buttons {
