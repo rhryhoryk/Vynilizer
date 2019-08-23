@@ -11,41 +11,34 @@ const audios      = document.querySelectorAll('.track-list__audio');
 const songNames   = document.querySelectorAll('.track-list__item'); 
 let index         = 0;
 
-console.log(index);
-console.log(audios);
-
-
-nextButton.addEventListener('click', function() {
-  if (index + 1 === songNames.length) {index = 0} else {index++};
-
+function setAudio () {
   for(let i = 0; i < songNames.length; i++){
     songNames[i].classList.add('--unchosen');
   }
   songNames[index].classList.remove('--unchosen');
- 
-  if (index == 0) {
-    audios[songNames.length-1].pause();
-    } else {audios[index-1].pause();
-  }
+
   playButton.style.backgroundImage = "url(./img/playButton.png)";
   vinyl.classList.remove('--vinylaised');
-})
+}
 
-prevButton.addEventListener('click', function() {
-  if (index == 0) {index = songNames.length-1} else {index--};
+playButton.addEventListener('click', function () {
+  vinyl.classList.toggle('--vinylaised');
 
-  for(let i = 0; i < songNames.length; i++){
-    songNames[i].classList.add('--unchosen');
+  if (audios[index].paused) {
+    audios[index].muted = false;
+    muteButton.style.backgroundImage = "url(./img/unmutedButton.png)";
+    audios[index].play();
+    playButton.style.backgroundImage = "url(./img/pauseButton.png)";
+  } else {
+    audios[index].pause();
+    playButton.style.backgroundImage = "url(./img/playButton.png)";
   }
-  songNames[index].classList.remove('--unchosen');  
 
-  if (index == songNames.length-1) {
-    audios[0].pause()
-    } else {audios[index+1].pause();
+  if (vinyl.classList.contains('--vinylaised')) {
+    pickup.classList.remove('--unpickupaised');
+    pickup.classList.add('--pickupaised');
   }
-  playButton.style.backgroundImage = "url(./img/playButton.png)";
-  vinyl.classList.remove('--vinylaised');
-})
+ });
 
 muteButton.addEventListener('click', function () {
   if (audios[index].muted) {
@@ -66,21 +59,22 @@ muteButton.addEventListener('click', function () {
 });
 
 
-playButton.addEventListener('click', function () {
-  vinyl.classList.toggle('--vinylaised');
-
-  if (audios[index].paused) {
-    audios[index].muted = false;
-    muteButton.style.backgroundImage = "url(./img/unmutedButton.png)";
-    audios[index].play();
-    playButton.style.backgroundImage = "url(./img/pauseButton.png)";
-  } else {
-    audios[index].pause();
-    playButton.style.backgroundImage = "url(./img/playButton.png)";
+ nextButton.addEventListener('click', function() {
+  if (index + 1 === songNames.length) {index = 0} else {index++};
+ 
+  if (index == 0) {
+    audios[songNames.length-1].pause();
+    } else {audios[index-1].pause();
   }
+  setAudio()
+})
 
-  if (vinyl.classList.contains('--vinylaised')) {
-    pickup.classList.remove('--unpickupaised');
-    pickup.classList.add('--pickupaised');
+prevButton.addEventListener('click', function() {
+  if (index == 0) {index = songNames.length-1} else {index--};
+
+  if (index == songNames.length-1) {
+    audios[0].pause()
+    } else {audios[index+1].pause();
   }
- });
+  setAudio()
+})
