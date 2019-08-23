@@ -70,8 +70,8 @@ button {
   width: 5vw;
   height: 5vw;
   font-size: 2.5rem;
-  background: url('../img/playButtons.png') no-repeat;
   background-size: cover;
+  background-repeat: no-repeat;
   outline: none;
 }
 
@@ -79,10 +79,10 @@ button:hover {
   cursor: pointer;
 }
 
-.prev {background-position: 0 0;       grid-area: prev;}
-.play {background-position: -5.4vw 0;  grid-area: play;}
-.next {background-position: -10.9vw 0; grid-area: next}
-.pickup-up-down {background-position: -16.5vw 0; grid-area: up-down}
+.prev {background-image: url('../img/prevButton.png') ;  grid-area: prev;}
+.play {background-image: url('../img/playButton.png') ;  grid-area: play;}
+.next {background-image: url('../img/nextButton.png') ;  grid-area: next}
+.mute {background-image: url('../img/mutedButton.png');  grid-area: up-down}
 
 
 .--vinylaised {

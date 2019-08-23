@@ -1,6 +1,6 @@
 // buttons
 const playButton  = document.querySelector('.play');
-const updownButton= document.querySelector('.pickup-up-down');
+const muteButton  = document.querySelector('.mute');
 const prevButton  = document.querySelector('.prev');
 const nextButton  = document.querySelector('.next');
 // objects
@@ -27,6 +27,7 @@ nextButton.addEventListener('click', function() {
     audios[songNames.length-1].pause();
     } else {audios[index-1].pause();
   }
+  playButton.style.backgroundImage = "url(./img/playButton.png)";
   vinyl.classList.remove('--vinylaised');
 })
 
@@ -42,13 +43,17 @@ prevButton.addEventListener('click', function() {
     audios[0].pause()
     } else {audios[index+1].pause();
   }
+  playButton.style.backgroundImage = "url(./img/playButton.png)";
   vinyl.classList.remove('--vinylaised');
 })
 
-updownButton.addEventListener('click', function () {
+muteButton.addEventListener('click', function () {
   if (audios[index].muted) {
     audios[index].muted = false;
-  } else {audios[index].muted = true;}
+    muteButton.style.backgroundImage = "url(./img/unmutedButton.png)";
+  } else {audios[index].muted = true;
+    muteButton.style.backgroundImage = "url(./img/mutedButton.png)";
+  }
 
   if (pickup.classList.contains('--unpickupaised')) { 
     pickup.classList.remove('--unpickupaised');
@@ -65,8 +70,14 @@ playButton.addEventListener('click', function () {
   vinyl.classList.toggle('--vinylaised');
 
   if (audios[index].paused) {
+    audios[index].muted = false;
+    muteButton.style.backgroundImage = "url(./img/unmutedButton.png)";
     audios[index].play();
-  } else {audios[index].pause();}
+    playButton.style.backgroundImage = "url(./img/pauseButton.png)";
+  } else {
+    audios[index].pause();
+    playButton.style.backgroundImage = "url(./img/playButton.png)";
+  }
 
   if (vinyl.classList.contains('--vinylaised')) {
     pickup.classList.remove('--unpickupaised');
