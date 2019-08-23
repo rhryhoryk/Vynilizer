@@ -37,9 +37,19 @@ body {
   top: 1vw;
   right: 0.5vw;
   width: 13vw;
-  height: 5vw;
+  padding: 0.3rem;
+  border: 2px solid #555;
   border-radius: 10px;
-  background-color: #000;
+  background-color: #75757580;
+}
+
+.track-list__item {
+  list-style: none;
+  color: #33333380;
+}
+
+.--chosen {
+  color: #000;
 }
 
 .buttons {
